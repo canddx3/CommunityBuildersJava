@@ -45,6 +45,16 @@ public class UserController {
 		return foundRepos;
 	}
 	
+	@GetMapping("/user/{username}")
+	public ResponseEntity<User> getCharity(@PathVariable(value="username") String username) {
+		User foundUser = dao.findByUsername(username).orElse(null);
+		
+		if(foundUser == null) {
+			return ResponseEntity.notFound().header("Message",  "No account found with that username").build();
+		}
+		return ResponseEntity.ok(foundUser);
+	}
+	
     @PostMapping("/user")
     public String createUser(@RequestParam("charityPhone") Long charityPhone ,@RequestParam("charityZip") Long charityZip ,@RequestParam("charityState") String charityState ,@RequestParam("charityCity") String charityCity ,@RequestParam("charityStreet") String charityStreet ,@RequestParam("charityCat") String charityCat ,@RequestParam("charityName") String charityName ,@RequestParam("charityTitle") String charityTitle ,@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
     	User foundUser = userRepository.findByUsername(username);
@@ -68,4 +78,31 @@ public class UserController {
     		return "user";
     	}
     }
+    
+    @PutMapping("/user/{username}")
+	public ResponseEntity<User> putUser(@PathVariable(value="username") String username, @RequestBody User user) {
+		// Saving to DB using an instance of the repo interface.
+		User foundUser = userRepository.findByUsername(username).orElse(null);
+		
+		// RespEntity crafts response to include correct status codes.
+		if(foundUser == null) {
+			return ResponseEntity.notFound().header("Message",  "No account found with that username").build();
+		}
+		else {
+			foundUser.setUsername(user.getUsername());
+			foundUser.setPassword(user.getPassword());
+			foundUser.setCharityCat(user.getCharityCat());
+			foundUser.setCharityTitle(user.getCharityTitle());
+			foundUser.setCharityName(user.getCharityName());
+			foundUser.setCharityStreet(user.getCharityStreet());
+			foundUser.setCharityCity(user.getCharityCity());
+			foundUser.setCharityState(user.getCharityState());
+			founduser.setCharityZip(user.getCharityZip());
+			foundUser.setCharityPhone(user.getCharityPhone());
+			// foundUser.setEmail(user.getEmail());
+			foundUser.setAboutUs(user.getAboutUs());
+			userRepository.save(foundUser);
+		}
+		return ResponseEntity.ok(foundUser);
+	}
 }

@@ -18,6 +18,7 @@ public class User {
     private String charityState;
     private Long charityZip;
     private Long charityPhone;
+    private String aboutUs;
     
     @Column(nullable = false, unique = true)
     private String username;
@@ -109,5 +110,11 @@ public class User {
 
 	public void setCharityPhone(Long charityPhone) {
 		this.charityPhone = charityPhone;
+	}
+	public String getAboutUs(String aboutUs) {
+		return aboutUs;
+	}
+	public void setAboutUs(String aboutUs) {
+		this.aboutUs = aboutUs;
 	}
 }
