@@ -2,19 +2,26 @@ package com.volapp.charity;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.volapp.charity.User;
 
-@Controller
+@RestController
 public class UserController {
 
 	@Autowired
-	private UserRepository userRepository;
+	UserRepository userRepository;
 	
 	@Autowired
 	private MySQLUserDetailsService userService;
@@ -34,11 +41,6 @@ public class UserController {
 		return "Login.html";
 	}
 	
-	@RequestMapping("/home")
-	public String hope() {
-		return "home.html";
-	}
-	
 	@GetMapping("/user")
 	public List<User> getUsers(){
 		List<User> foundRepos = userRepository.findAll();
@@ -47,7 +49,7 @@ public class UserController {
 	
 	@GetMapping("/user/{username}")
 	public ResponseEntity<User> getCharity(@PathVariable(value="username") String username) {
-		User foundUser = dao.findByUsername(username).orElse(null);
+		User foundUser = userRepository.findByUsername(username).orElse(null);
 		
 		if(foundUser == null) {
 			return ResponseEntity.notFound().header("Message",  "No account found with that username").build();
@@ -55,8 +57,8 @@ public class UserController {
 		return ResponseEntity.ok(foundUser);
 	}
 	
-    @PostMapping("/user")
-    public String createUser(@RequestParam("charityPhone") Long charityPhone ,@RequestParam("charityZip") Long charityZip ,@RequestParam("charityState") String charityState ,@RequestParam("charityCity") String charityCity ,@RequestParam("charityStreet") String charityStreet ,@RequestParam("charityCat") String charityCat ,@RequestParam("charityName") String charityName ,@RequestParam("charityTitle") String charityTitle ,@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+    @PostMapping("/user/{username}")
+    public ResponseEntity<User> createUser(@RequestParam("charityPhone") Long charityPhone ,@RequestParam("charityZip") Long charityZip ,@RequestParam("charityState") String charityState ,@RequestParam("charityCity") String charityCity ,@RequestParam("charityStreet") String charityStreet ,@RequestParam("charityCat") String charityCat ,@RequestParam("charityName") String charityName ,@RequestParam("charityTitle") String charityTitle ,@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
     	User foundUser = userRepository.findByUsername(username);
     	if (foundUser == null) {
     		User newUser = new User();
@@ -71,11 +73,11 @@ public class UserController {
     		newUser.setUsername(username);
     		newUser.setPassword(password);
     		userService.Save(newUser);
-    		return "Login";
+    		return ResponseEntity.ok(newUser);
     	}
     	else {
     		model.addAttribute("exists", true);
-    		return "user";
+    		return ResponseEntity.ok(foundUser);
     	}
     }
     
@@ -97,12 +99,25 @@ public class UserController {
 			foundUser.setCharityStreet(user.getCharityStreet());
 			foundUser.setCharityCity(user.getCharityCity());
 			foundUser.setCharityState(user.getCharityState());
-			founduser.setCharityZip(user.getCharityZip());
+			foundUser.setCharityZip(user.getCharityZip());
 			foundUser.setCharityPhone(user.getCharityPhone());
 			// foundUser.setEmail(user.getEmail());
 			foundUser.setAboutUs(user.getAboutUs());
 			userRepository.save(foundUser);
 		}
 		return ResponseEntity.ok(foundUser);
+	}
+    
+    @DeleteMapping("/user/{username}")
+	public ResponseEntity<User> deleteUser(@PathVariable(value="username") String username) {
+		User foundUser = userRepository.findByUsername(username).orElse(null);
+		
+		if(foundUser == null) {
+			return ResponseEntity.notFound().header("Message",  "No account with that username").build();
+		}
+		else {
+			userRepository.delete(foundUser);
+		}
+		return ResponseEntity.ok().build();
 	}
 }

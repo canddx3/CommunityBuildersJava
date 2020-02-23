@@ -111,10 +111,15 @@ public class User {
 	public void setCharityPhone(Long charityPhone) {
 		this.charityPhone = charityPhone;
 	}
-	public String getAboutUs(String aboutUs) {
+	public String getAboutUs() {
 		return aboutUs;
 	}
 	public void setAboutUs(String aboutUs) {
 		this.aboutUs = aboutUs;
+	}
+
+	public User orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
