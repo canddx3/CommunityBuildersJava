@@ -11,9 +11,9 @@ import java.io.FileNotFoundException;
 public class CharityImageStorageService {
 	
 	@Autowired
-	private static CharityImageRepository charityImageRepository;
+	private static UserRepository userRepository;
 	
-	public CharityImage storeFile(MultipartFile file) throws Exception {
+	public User storeFile(MultipartFile file) throws Exception {
 		
 		// Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -24,17 +24,17 @@ public class CharityImageStorageService {
                 throw new Exception("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
-            CharityImage imageFile = new CharityImage(fileName, file.getContentType(), file.getBytes());
+            User imageFile = new User(fileName, file.getContentType(), file.getBytes());
 
-            return charityImageRepository.save(imageFile);
+            return userRepository.save(imageFile);
         } catch (IOException ex) {
             throw new Exception("Could not store file " + fileName + ". Please try again!", ex);
         }
 	}
 	
-	public static CharityImage getFile(String fileId) throws Exception {
-        return charityImageRepository.findById(fileId)
-                .orElseThrow(() -> new FileNotFoundException("File not found with id " + fileId));
+	public static User getFile(String username) throws Exception {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new FileNotFoundException("File not found with id " + username));
     }
 
 }

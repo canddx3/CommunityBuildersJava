@@ -19,12 +19,25 @@ public class User {
     private Long charityZip;
     private Long charityPhone;
     private String aboutUs;
+	private String fileName;
+    private String fileType;
+    @Lob
+    private byte[] data;
     
     @Column(nullable = false, unique = true)
     private String username;
     private String password;
 
-	public Long getId() {
+    public User() {
+    	
+    }
+    public User(String fileName, String fileType, byte[] data) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
+    }
+    
+    public Long getId() {
 		return id;
 	}
 
@@ -116,6 +129,29 @@ public class User {
 	}
 	public void setAboutUs(String aboutUs) {
 		this.aboutUs = aboutUs;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 
 	public User orElse(Object object) {

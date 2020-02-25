@@ -25,7 +25,7 @@ public class FileUploadController {
 	
 	@PostMapping("/uploadFile")
     public Response uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
-        CharityImage imageFile = charityImageStorageService.storeFile(file);
+        User imageFile = charityImageStorageService.storeFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -56,7 +56,7 @@ public class FileUploadController {
     @GetMapping("/downloadFile/{fileId}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) throws Exception {
         // Load file from database
-        CharityImage imageFile = CharityImageStorageService.getFile(fileId);
+        User imageFile = CharityImageStorageService.getFile(fileId);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(imageFile.getFileType()))
