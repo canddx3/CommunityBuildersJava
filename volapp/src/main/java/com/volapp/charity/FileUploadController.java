@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.volapp.charity.CharityImageStorageService;
-import com.volapp.charity.CharityImage;
+import com.volapp.charity.User;
 
 @RestController
 public class FileUploadController {

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 
 @Service
 public class CharityImageStorageService {
@@ -33,8 +33,12 @@ public class CharityImageStorageService {
 	}
 	
 	public static User getFile(String username) throws Exception {
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new FileNotFoundException("File not found with id " + username));
+		try {
+        return userRepository.findByUsername(username);
+		} catch (Exception ex) {
+			throw new Exception("File not found for User " + username + ". Please consider uploading an image file.", ex);
+		}
+//                .orElseThrow(() -> new FileNotFoundException("File not found with id " + username));
     }
 
 }
