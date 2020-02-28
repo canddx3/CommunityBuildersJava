@@ -2,10 +2,10 @@ package com.volapp.charity;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
+/*import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.MediaType;*/
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +23,9 @@ public class EventController {
 	
 	@Autowired
 	EventRepository eventRepository;
+	
+	@Autowired
+	VolunteerRepository volunteerRepository;
 	
 	@Autowired
 	private MySQLUserDetailsService userService;
@@ -75,7 +78,7 @@ public class EventController {
 	
 	@PutMapping("/event/{username}/{eventID}")
 	public ResponseEntity<Event> updateEvent(@PathVariable(value="eventID") Long eventID, @RequestBody Event event) throws Exception {
-		// Saving to DB using an instance of the repo interface.
+		// Saving to DB using an instance of the repository interface.
 		try {
 			
 			Event foundEvent = eventRepository.findByEventID(eventID);
@@ -91,7 +94,7 @@ public class EventController {
 				foundEvent.setEventDay(event.getEventDay());
 				foundEvent.setEventMonth(event.getEventMonth());
 				foundEvent.setEventYear(event.getEventYear());
-				eventRepository.Save(foundEvent);
+				eventRepository.save(foundEvent);
 			}
 			
 			return ResponseEntity.ok(foundEvent);			
@@ -101,9 +104,44 @@ public class EventController {
 		}
 	}
 	
+	@PostMapping("/event/{username}/{eventID}")
+	public ResponseEntity<Event> addVolunteerToEvent(@PathVariable(value="eventID") Long eventID, @RequestBody Event event, @RequestBody Volunteer volunteer, @RequestBody Model model) throws Exception {
+		// Saving to DB using an instance of the repository interface.
+		try {
+			
+			Event foundEvent = eventRepository.findByEventID(eventID);
+			Volunteer foundVolunteer = volunteerRepository.findByVolunteerUsername(volunteer.getVolunteerUsername());
+			// RespEntity crafts response to include correct status codes.
+			if(foundEvent == null) {
+				return ResponseEntity.notFound().header("Message",  "No event found with that eventID").build();
+			}
+			
+			else {
+				
+				if(foundVolunteer == null) {
+					Volunteer newVolunteer = new Volunteer();
+					newVolunteer.getVolunteerFirstName();
+					newVolunteer.getVolunteerLastName();
+					newVolunteer.getVolunteerEmail();
+					newVolunteer.getVolunteerPhone();
+					eventRepository.save(newVolunteer);
+				} else {
+		    		model.addAttribute("exists", true);
+				}
+			}
+			
+			return ResponseEntity.ok(foundEvent);
+			
+			} catch (Exception ex) {
+			
+				throw new Exception("Could not locate any event for this organization with that eventID." + ex);
+			}
+	}
+	
 	@DeleteMapping("/event/{username}/{eventID}")
-	public ResponseEntity<Event> deleteUser(@PathVariable(value="eventID") Long eventID) {
-		Event foundEvent = eventRepository.findByEventID(eventID).orElse(null);
+	public ResponseEntity<Event> deleteUser(@PathVariable(value="eventID") Long eventID) throws Exception {
+		try {
+		Event foundEvent = eventRepository.findByEventID(eventID);
 		
 		if(foundEvent == null) {
 			return ResponseEntity.notFound().header("Message",  "No account with that username").build();
@@ -112,5 +150,9 @@ public class EventController {
 			eventRepository.delete(foundEvent);
 		}
 		return ResponseEntity.ok().build();
+		} catch (Exception ex) {
+			
+			throw new Exception("Could not locate any event for this organization with that eventID." + ex);
+		}
 	}
 }

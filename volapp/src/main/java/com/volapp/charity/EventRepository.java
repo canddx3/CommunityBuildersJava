@@ -11,4 +11,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 	
 	List<Event> findByUsername(String username);
 
+	void save(Volunteer foundVolunteer);
+
 }

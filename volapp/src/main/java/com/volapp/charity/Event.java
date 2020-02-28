@@ -19,6 +19,7 @@ public class Event extends User {
 	private String eventMonth;
 	private String eventDay;
 	private String eventYear;
+	private String volunteerUsername;
 	
 	
 	public Event() {
@@ -72,6 +73,14 @@ public class Event extends User {
 
 	public void setEventYear(String eventYear) {
 		this.eventYear = eventYear;
+	}
+
+	public String getVolunteerUsername() {
+		return volunteerUsername;
+	}
+
+	public void setVolunteerUsername(String volunteerUsername) {
+		this.volunteerUsername = volunteerUsername;
 	}
 	
 
