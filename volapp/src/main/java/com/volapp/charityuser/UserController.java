@@ -1,4 +1,4 @@
-package com.volunteer.charityuser;
+package com.volapp.charityuser;
 
 import javax.validation.Valid;
 
@@ -20,16 +20,19 @@ public class UserController {
 	@Autowired
 	UserRepository userRepo;
 	
+	@Autowired
+	private MySQLUserDetailsService userService;
+	
 	@GetMapping("/user/{username}")
 	public User find(@PathVariable("username") String username) {
 		return userRepo.findByUsername(username);
 	}
 	
 	@PostMapping("/user")
-	public ResponseEntity<Object> User(@Valid @RequestBody User user){
-	User newUser = new User(user.getCharityZip(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityPhone(), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
+	public ResponseEntity<User> createUser(@Valid @RequestBody User user){
+	User newUser = new User(user.getId(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityPhone(), user.getCharityZip(), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
 	
-	userRepo.save(newUser);
+	userService.Save(newUser);
 	return ResponseEntity.ok().body(user);
 	}
 

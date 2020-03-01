@@ -1,4 +1,4 @@
-package com.volunteer.events;
+package com.volapp.events;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

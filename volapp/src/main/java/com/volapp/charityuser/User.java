@@ -1,4 +1,4 @@
-package com.volunteer.charityuser;
+package com.volapp.charityuser;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,13 +42,13 @@ public class User {
     	this.charityCity = user.charityCity;
     	this.charityState = user.charityState;
     	this.charityZip = user.charityZip;
-    	this.charityPhone = user.charityZip;
+    	this.charityPhone = user.charityPhone;
     	this.username = user.username;
     	this.password = user.password;
     	this.charityLogoLink = user.charityLogoLink;
     }
 
-    public User(Long id, String charityTitle, String charityName, String charityCat, String charityStreet, String charityCity, String charityState, Long charityZip, String username, String password, String charityLogoLink) {
+    public User(Long id, String charityTitle, String charityName, String charityCat, String charityStreet, String charityCity, String charityState, Long charityZip, Long charityPhone, String username, String password, String charityLogoLink) {
     	this.id = id;
     	this.charityTitle = charityTitle;
     	this.charityName = charityName;
@@ -57,7 +57,7 @@ public class User {
     	this.charityCity = charityCity;
     	this.charityState = charityState;
     	this.charityZip = charityZip;
-    	this.charityPhone = charityZip;
+    	this.charityPhone = charityPhone;
     	this.username = username;
     	this.password = password;
     	this.charityLogoLink = charityLogoLink;

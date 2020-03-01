@@ -1,4 +1,4 @@
-package com.volunteer.events;
+package com.volapp.events;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

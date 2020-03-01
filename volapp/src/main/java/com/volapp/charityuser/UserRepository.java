@@ -1,4 +1,4 @@
-package com.volunteer.charityuser;
+package com.volapp.charityuser;
 
 import java.util.List;
 
