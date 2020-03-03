@@ -1,11 +1,11 @@
-package com.volapp.charity;
+package com.volapp.volunteer;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
+/*import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.MediaType;*/
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,19 +17,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+/*import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.volapp.charity.Volunteer;
+import com.volapp.charity.CharityImageStorageService;*/
+import com.volapp.charity.MySQLUserDetailsService;
+import com.volapp.volunteer.Volunteer;
 
 @RestController
 public class VolunteerController {
 
 	@Autowired
-	volunteerRepository volunteerRepository;
-	
-	@Autowired
-	private CharityImageStorageService charityImageStorageService;
+	VolunteerRepository volunteerRepository;
 	
 	@Autowired
 	private MySQLUserDetailsService userService;
@@ -39,51 +38,48 @@ public class VolunteerController {
 		return "home.html";
 	}
 	
-	@RequestMapping("/Volunteer")
+	@RequestMapping("/volunteer")
 	public String Volunteer() {
-		return "Volunteer.html";
+		return "volunteer.html";
 	}
 	
-	@RequestMapping("/Login")
+	@RequestMapping("/volunteer/login")
 	public String Login() {
 		return "Login.html";
 	}
 	
-	@GetMapping("/Volunteer")
+	@GetMapping("/volunteer")
 	public List<Volunteer> getVolunteers(){
-		List<Volunteer> foundRepos = volunteerRepository.findAll();
-		return foundRepos;
+		List<Volunteer> foundVolunteers = volunteerRepository.findAll();
+		return foundVolunteers;
 	}
 	
-	@GetMapping("/Volunteer/{volunteerUsername}")
-	public ResponseEntity<Volunteer> getCharity(@PathVariable(value="volunteerUsername") String volunteerUsername) {
+	@GetMapping("/volunteer/{volunteerUsername}")
+	public ResponseEntity<Volunteer> getVolunteer(@PathVariable(value="volunteerUsername") String volunteerUsername) {
 		Volunteer foundVolunteer = volunteerRepository.findByVolunteerUsername(volunteerUsername).orElse(null);
 		
 		if(foundVolunteer == null) {
-			return ResponseEntity.notFound().header("Message",  "No account found with that volunteerUsername").build();
+			return ResponseEntity.notFound().header("Message",  "No volunteer account found with that username").build();
 		}
 		return ResponseEntity.ok(foundVolunteer);
 	}
 	
     @PostMapping("/Volunteer/{volunteerUsername}")
-    public ResponseEntity<Volunteer> createVolunteer(@RequestParam("charityPhone") Long charityPhone ,@RequestParam("charityZip") Long charityZip ,@RequestParam("charityState") String charityState ,@RequestParam("charityCity") String charityCity ,@RequestParam("charityStreet") String charityStreet ,@RequestParam("charityCat") String charityCat ,@RequestParam("charityName") String charityName ,@RequestParam("charityTitle") String charityTitle ,@RequestParam("volunteerUsername") String volunteerUsername, @RequestParam("password") String password, @RequestParam("fileName") String fileName, @RequestParam("fileType") String fileType, @RequestParam("data") byte[] data, Model model) {
-    	Volunteer foundVolunteer = volunteerRepository.findByvolunteerUsername(volunteerUsername);
+    public ResponseEntity<Volunteer> createVolunteer(@RequestParam("volunteerUsername") String volunteerUsername ,@RequestParam("volunteerPassword") String volunteerPassword ,@RequestParam("volunteerEmail") String volunteerEmail ,@RequestParam("volunteerFirstName") String volunteerFirstName ,@RequestParam("volunteerLastName") String volunteerLastName ,@RequestParam("volunteerStreet") String volunteerStreet ,@RequestParam("volunteerCity") String volunteerCity, @RequestParam("volunteerState") String volunteerState, @RequestParam("volunteerZip") String volunteerZip, @RequestParam("volunteerPhone") Long volunteerPhone, Model model) {
+    	Volunteer foundVolunteer = volunteerRepository.findByVolunteerUsername(volunteerUsername);
     	if (foundVolunteer == null) {
     		Volunteer newVolunteer = new Volunteer();
-    		newVolunteer.setCharityTitle(charityTitle);
-    		newVolunteer.setCharityName(charityName);
-    		newVolunteer.setCharityCat(charityCat);
-    		newVolunteer.setCharityStreet(charityStreet);
-    		newVolunteer.setCharityCity(charityCity);
-    		newVolunteer.setCharityState(charityState);
-    		newVolunteer.setCharityZip(charityZip);
-    		newVolunteer.setCharityPhone(charityPhone);
-    		newVolunteer.setvolunteerUsername(volunteerUsername);
-    		newVolunteer.setPassword(password);
-    		newVolunteer.setFileName(fileName);
-    		newVolunteer.setFileType(fileType);
-    		newVolunteer.setData(data);
-    		VolunteerService.Save(newVolunteer);
+    		newVolunteer.setVolunteerUsername(volunteerUsername);
+    		newVolunteer.setVolunteerPassword(volunteerPassword);
+    		newVolunteer.setVolunteerEmail(volunteerEmail);
+    		newVolunteer.setVolunteerFirstName(volunteerFirstName);
+    		newVolunteer.setVolunteerLastName(volunteerLastName);
+    		newVolunteer.setVolunteerStreet(volunteerStreet);
+    		newVolunteer.setVolunteerCity(volunteerCity);
+    		newVolunteer.setVolunteerState(volunteerState);
+    		newVolunteer.setVolunteerZip(volunteerZip);
+    		newVolunteer.setVolunteerPhone(volunteerPhone);
+    		userService.Save(newVolunteer);
     		return ResponseEntity.ok(newVolunteer);
     	}
     	else {
@@ -120,35 +116,31 @@ public class VolunteerController {
     @PutMapping("/volunteer/{volunteerUsername}")
 	public ResponseEntity<Volunteer> putVolunteer(@PathVariable(value="volunteerUsername") String volunteerUsername, @RequestBody Volunteer Volunteer) {
 		// Saving to DB using an instance of the repo interface.
-		Volunteer foundVolunteer = volunteerRepository.findByvolunteerUsername(volunteerUsername).orElse(null);
+		Volunteer foundVolunteer = volunteerRepository.findByVolunteerUsername(volunteerUsername).orElse(null);
 		
 		// RespEntity crafts response to include correct status codes.
 		if(foundVolunteer == null) {
-			return ResponseEntity.notFound().header("Message",  "No account found with that volunteerUsername").build();
+			return ResponseEntity.notFound().header("Message",  "No volunteer account found with that username").build();
 		}
 		else {
-			foundVolunteer.setvolunteerUsername(Volunteer.getvolunteerUsername());
-			foundVolunteer.setPassword(Volunteer.getPassword());
-			foundVolunteer.setCharityCat(Volunteer.getCharityCat());
-			foundVolunteer.setCharityTitle(Volunteer.getCharityTitle());
-			foundVolunteer.setCharityName(Volunteer.getCharityName());
-			foundVolunteer.setCharityStreet(Volunteer.getCharityStreet());
-			foundVolunteer.setCharityCity(Volunteer.getCharityCity());
-			foundVolunteer.setCharityState(Volunteer.getCharityState());
-			foundVolunteer.setCharityZip(Volunteer.getCharityZip());
-			foundVolunteer.setCharityPhone(Volunteer.getCharityPhone());
-			foundVolunteer.setAboutUs(Volunteer.getAboutUs());
-			foundVolunteer.setFileName(Volunteer.getFileName());
-			foundVolunteer.setFileType(Volunteer.getFileType());
-			foundVolunteer.setData(Volunteer.getData());
-			volunteerRepository.save(foundVolunteer);
+			foundVolunteer.setVolunteerUsername(Volunteer.getVolunteerUsername());
+			foundVolunteer.setVolunteerPassword(Volunteer.getVolunteerPassword());
+			foundVolunteer.setVolunteerEmail(Volunteer.getVolunteerEmail());
+			foundVolunteer.setVolunteerFirstName(Volunteer.getVolunteerFirstName());
+			foundVolunteer.setVolunteerLastName(Volunteer.getVolunteerLastName());
+			foundVolunteer.setVolunteerStreet(Volunteer.getVolunteerStreet());
+			foundVolunteer.setVolunteerCity(Volunteer.getVolunteerCity());
+			foundVolunteer.setVolunteerState(Volunteer.getVolunteerState());
+			foundVolunteer.setVolunteerZip(Volunteer.getVolunteerZip());
+			foundVolunteer.setVolunteerPhone(Volunteer.getVolunteerPhone());
+    		userService.Save(foundVolunteer);
 		}
 		return ResponseEntity.ok(foundVolunteer);
 	}
     
     @DeleteMapping("/Volunteer/{volunteerUsername}")
 	public ResponseEntity<Volunteer> deleteVolunteer(@PathVariable(value="volunteerUsername") String volunteerUsername) {
-		Volunteer foundVolunteer = volunteerRepository.findByvolunteerUsername(volunteerUsername).orElse(null);
+		Volunteer foundVolunteer = volunteerRepository.findByVolunteerUsername(volunteerUsername).orElse(null);
 		
 		if(foundVolunteer == null) {
 			return ResponseEntity.notFound().header("Message",  "No account with that volunteerUsername").build();

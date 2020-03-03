@@ -1,4 +1,4 @@
-package com.volapp.charity;
+package com.volapp.unused;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

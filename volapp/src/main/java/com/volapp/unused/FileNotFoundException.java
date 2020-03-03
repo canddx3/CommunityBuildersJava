@@ -1,4 +1,4 @@
-package com.volapp.charity;
+package com.volapp.unused;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

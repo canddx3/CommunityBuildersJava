@@ -1,4 +1,4 @@
-package com.volapp.charity;
+package com.volapp.events;
 
 import javax.persistence.*;
 import com.volapp.charity.User;

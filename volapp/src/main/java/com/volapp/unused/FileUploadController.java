@@ -1,4 +1,4 @@
-package com.volapp.charity;
+package com.volapp.unused;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.volapp.charity.CharityImageStorageService;
+import com.volapp.charity.Response;
 import com.volapp.charity.User;
 
 @RestController

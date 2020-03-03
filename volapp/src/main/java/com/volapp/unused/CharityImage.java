@@ -1,6 +1,10 @@
-package com.volapp.charity;
+package com.volapp.unused;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 

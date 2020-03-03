@@ -1,4 +1,4 @@
-package com.volapp.charity;
+package com.volapp.volunteer;
 
 import javax.persistence.*;
 
@@ -93,6 +93,9 @@ public class Volunteer {
 	public void setVolunteerPhone(Long volunteerPhone) {
 		this.volunteerPhone = volunteerPhone;
 	}
-	
+	public Volunteer orElse(Volunteer volunteer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

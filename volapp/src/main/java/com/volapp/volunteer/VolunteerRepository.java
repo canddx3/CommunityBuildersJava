@@ -1,4 +1,4 @@
-package com.volapp.charity;
+package com.volapp.volunteer;
 
 import java.util.List;
 

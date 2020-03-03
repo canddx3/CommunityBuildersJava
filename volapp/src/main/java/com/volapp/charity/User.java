@@ -154,7 +154,7 @@ public class User {
 		this.data = data;
 	}
 
-	public User orElse(Object object) {
+	public User orElse(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
