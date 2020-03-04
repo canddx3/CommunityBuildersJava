@@ -6,15 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
+@Table(name="events")
 public class Events{
 
 
     private String eventName;
-    private String eventLocation;
+    private String eventStreet;
+    private String eventCity;
+    private String eventState;
+    private String eventZip;
     private LocalDate eventDate;
     private LocalTime eventTime;
     private String eventDescription;
@@ -31,17 +35,23 @@ public class Events{
     	this.id = events.id;
     	this.charityName = events.charityName;
     	this.eventName = events.eventName;
-    	this.eventLocation = events.eventLocation;
+    	this.eventStreet = events.eventStreet;
+    	this.eventCity = events.eventCity;
+    	this.eventState = events.eventState;
+    	this.eventZip = events.eventZip;
     	this.eventDate = events.eventDate;
     	this.eventTime = events.eventTime;
     	this.eventDescription = events.eventDescription;
     }
     
-    public Events (Long id, String charityName, String eventName, String eventLocation, LocalDate eventDate, LocalTime eventTime, String eventDescription) {
+    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, LocalDate eventDate, LocalTime eventTime, String eventDescription) {
     	this.id = id;
     	this.charityName = charityName;
     	this.eventName = eventName;
-    	this.eventLocation = eventLocation;
+    	this.eventStreet = eventStreet;
+    	this.eventCity = eventCity;
+    	this.eventState = eventState;
+    	this.eventZip = eventZip;
     	this.eventDate = eventDate;
     	this.eventTime = eventTime;
     	this.eventDescription = eventDescription;
@@ -54,7 +64,7 @@ public class Events{
 	}
 
 
-	public void setid(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -79,30 +89,49 @@ public class Events{
 	}
 
 
-	public String getEventLocation() {
-		return eventLocation;
+	public String getEventStreet() {
+		return eventStreet;
 	}
 
-
-	public void setEventLocation(String eventLocation) {
-		this.eventLocation = eventLocation;
+	public void setEventStreet(String eventStreet) {
+		this.eventStreet = eventStreet;
+	}
+	
+	public String getEventCity() {
+		return eventCity;
 	}
 
+	public void setEventCity(String eventCity) {
+		this.eventCity = eventCity;
+	}
+
+	public String getEventState() {
+		return eventState;
+	}
+
+	public void setEventState(String eventState) {
+		this.eventState = eventState;
+	}
+
+	public String getEventZip() {
+		return eventZip;
+	}
+
+	public void setEventZip(String eventZip) {
+		this.eventZip = eventZip;
+	}
 
 	public LocalDate getEventDate() {
 		return eventDate;
 	}
 
-
 	public void setEventDate(LocalDate eventDate) {
 		this.eventDate = eventDate;
 	}
 
-
 	public LocalTime getEventTime() {
 		return eventTime;
 	}
-
 
 	public void setEventTime(LocalTime eventTime) {
 		this.eventTime = eventTime;
@@ -112,7 +141,6 @@ public class Events{
 	public String getEventDescription() {
 		return eventDescription;
 	}
-
 
 	public void setEventDescription(String eventDescription) {
 		this.eventDescription = eventDescription;
