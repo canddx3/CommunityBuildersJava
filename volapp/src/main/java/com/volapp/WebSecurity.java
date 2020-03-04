@@ -10,53 +10,35 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.volapp.charity.MySQLUserDetailsService;
+import com.volapp.charityuser.MySQLUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurity extends WebSecurityConfigurerAdapter {
-
+public class WebSecurity extends WebSecurityConfigurerAdapter{
+	
 	@Autowired
-	private MySQLUserDetailsService mySQLUserDetailsService;
+	private MySQLUserDetailsService mySQLDetailsService;
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+		.httpBasic().and()
+	       .authorizeRequests()
+	       .antMatchers("/charity" , "/api/charity/**")
+	       .permitAll().anyRequest().authenticated()
+	       .and().csrf().disable();
+}
+
+  @Bean
+	public PasswordEncoder passwordEncoder(){
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(mySQLUserDetailsService).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(mySQLDetailsService).passwordEncoder(passwordEncoder());
 	}
 
 	
-	 @Override 
-	 protected void configure(HttpSecurity http) throws Exception {
-	 http.authorizeRequests() .antMatchers("/", "/user", "/home").permitAll()
-	 .anyRequest() .authenticated() .and() .formLogin() .loginPage("/Login")
-	 .permitAll() .and() .logout() .permitAll(); 
-	 }
-	 
-
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//		.httpBasic().and()
-//	       .authorizeRequests()
-//	       .antMatchers("/" , "/user")
-//	       .permitAll().anyRequest().authenticated()
-//	       .and().csrf().disable();
-//	}
-
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//		.httpBasic().and()
-//	       .authorizeRequests()
-//	       .antMatchers("/charity" , "/api/charity/**")
-//	       .permitAll().anyRequest().authenticated()
-//	       .and().csrf().disable();
-//	} 
-
 }

@@ -11,17 +11,17 @@ public class Volunteer {
 	private Long id;
 	
 	@Column(nullable=false, unique=true)
-	private String volunteerUsername;
-	private String volunteerPassword;
-	private String volunteerEmail;
+	private String username;
+	private String password;
+	private String email;
 	
-	private String volunteerFirstName;
-	private String volunteerLastName;
-	private String volunteerStreet;
-	private String volunteerCity;
-	private String volunteerState;
-	private String volunteerZip;
-	private Long volunteerPhone;
+	private String firstName;
+	private String lastName;
+	private String street;
+	private String city;
+	private String state;
+	private String zip;
+	private Long phone;
 	
 	public Volunteer() {
 		
@@ -33,66 +33,87 @@ public class Volunteer {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getVolunteerUsername() {
-		return volunteerUsername;
+	
+	public String getUsername() {
+		return username;
 	}
-	public void setVolunteerUsername(String volunteerUsername) {
-		this.volunteerUsername = volunteerUsername;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getVolunteerPassword() {
-		return volunteerPassword;
+
+	public String getPassword() {
+		return password;
 	}
-	public void setVolunteerPassword(String volunteerPassword) {
-		this.volunteerPassword = volunteerPassword;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getVolunteerEmail() {
-		return volunteerEmail;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setVolunteerEmail(String volunteerEmail) {
-		this.volunteerEmail = volunteerEmail;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getVolunteerFirstName() {
-		return volunteerFirstName;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setVolunteerFirstName(String volunteerFirstName) {
-		this.volunteerFirstName = volunteerFirstName;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getVolunteerLastName() {
-		return volunteerLastName;
+
+	public String getLastName() {
+		return lastName;
 	}
-	public void setVolunteerLastName(String volunteerLastName) {
-		this.volunteerLastName = volunteerLastName;
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public String getVolunteerStreet() {
-		return volunteerStreet;
+
+	public String getStreet() {
+		return street;
 	}
-	public void setVolunteerStreet(String volunteerStreet) {
-		this.volunteerStreet = volunteerStreet;
+
+	public void setStreet(String street) {
+		this.street = street;
 	}
-	public String getVolunteerCity() {
-		return volunteerCity;
+
+	public String getCity() {
+		return city;
 	}
-	public void setVolunteerCity(String volunteerCity) {
-		this.volunteerCity = volunteerCity;
+
+	public void setCity(String city) {
+		this.city = city;
 	}
-	public String getVolunteerState() {
-		return volunteerState;
+
+	public String getState() {
+		return state;
 	}
-	public void setVolunteerState(String volunteerState) {
-		this.volunteerState = volunteerState;
+
+	public void setState(String state) {
+		this.state = state;
 	}
-	public String getVolunteerZip() {
-		return volunteerZip;
+
+	public String getZip() {
+		return zip;
 	}
-	public void setVolunteerZip(String volunteerZip) {
-		this.volunteerZip = volunteerZip;
+
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
-	public Long getVolunteerPhone() {
-		return volunteerPhone;
+
+	public Long getPhone() {
+		return phone;
 	}
-	public void setVolunteerPhone(Long volunteerPhone) {
-		this.volunteerPhone = volunteerPhone;
+
+	public void setPhone(Long phone) {
+		this.phone = phone;
 	}
+
 	public Volunteer orElse(Volunteer volunteer) {
 		// TODO Auto-generated method stub
 		return null;
