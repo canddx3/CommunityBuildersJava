@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.volapp.volunteer.MySQLVolunteerDetailsService;
@@ -40,11 +41,21 @@ public class VolunteerController {
 		return ResponseEntity.ok(foundVolunteer);
 	}
 	
+	@PostMapping("/volunteer")
+	public ResponseEntity<Volunteer> createVolunteer(@Valid @RequestBody Volunteer volunteer) {
+		Volunteer newVolunteer = new Volunteer(volunteer.getId(), volunteer.getUsername(), volunteer.getPassword(), volunteer.getFirstName(), volunteer.getLastName(), volunteer.getEmail(), volunteer.getPhone(), volunteer.getStreet(), volunteer.getCity(), volunteer.getState(), volunteer.getZip());
+		
+		volunteerRepository.save(newVolunteer);
+		return ResponseEntity.ok().body(volunteer);
+
+	}
+	/*
     @PostMapping("/volunteer")
-    public ResponseEntity<Volunteer> createVolunteer(@RequestParam("username") String username ,@RequestParam("password") String password ,@RequestParam("email") String email ,@RequestParam("firstName") String firstName ,@RequestParam("lastName") String lastName ,@RequestParam("street") String street ,@RequestParam("city") String city, @RequestParam("state") String state, @RequestParam("zip") String zip, @RequestParam("phone") Long phone, Model model) {
+    public ResponseEntity<Volunteer> createVolunteer(@Valid @RequestParam("username") String username ,@RequestParam("password") String password ,@RequestParam("email") String email ,@RequestParam("firstName") String firstName ,@RequestParam("lastName") String lastName ,@RequestParam("street") String street ,@RequestParam("city") String city, @RequestParam("state") String state, @RequestParam("zip") String zip, @RequestParam("phone") Long phone, Model model) {
     	Volunteer foundVolunteer = volunteerRepository.findByUsername(username);
     	if (foundVolunteer == null) {
     		Volunteer newVolunteer = new Volunteer();
+    		newVolunteer.getId();
     		newVolunteer.getUsername();
     		newVolunteer.getPassword();
     		newVolunteer.getEmail();
@@ -56,13 +67,13 @@ public class VolunteerController {
     		newVolunteer.getZip();
     		newVolunteer.getPhone();
     		userService.Save(newVolunteer);
-    		return ResponseEntity.ok(newVolunteer);
+    		return ResponseEntity.ok().body(newVolunteer);
     	}
     	else {
     		model.addAttribute("exists", true);
     		return ResponseEntity.ok(foundVolunteer);
     	}
-    }
+    }*/
     	  
     @PutMapping("/volunteer/{username}")
 	public ResponseEntity<Volunteer> putVolunteer(@PathVariable(value="username") String username, @RequestBody Volunteer Volunteer) {

@@ -41,6 +41,20 @@ public class Volunteer {
 		this.zip = volunteer.zip;
 	}
 	
+	public Volunteer(Long id, String username, String password, String firstName, String lastName, String email, Long phone, String street, String city, String state, String zip) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
+	
 	public Long getId() {
 		return id;
 	}
