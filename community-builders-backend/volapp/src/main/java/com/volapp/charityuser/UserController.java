@@ -30,8 +30,7 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user){
-	User newUser = new User(user.getId(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityPhone(), user.getCharityZip(), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
-	
+	User newUser = new User(user.getId(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityZip(), user.convertPhone(user.getCharityPhone()), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
 	userService.Save(newUser);
 	return ResponseEntity.ok().body(user);
 	}
@@ -55,7 +54,7 @@ public class UserController {
 			foundUser.setCharityCity(user.getCharityCity());
 			foundUser.setCharityState(user.getCharityState());
 			foundUser.setCharityZip(user.getCharityZip());
-			foundUser.setCharityPhone(user.getCharityPhone());
+			foundUser.setCharityPhone(user.convertPhone(user.getCharityPhone()));
 			userRepo.save(foundUser);
 		}
 		return ResponseEntity.ok(foundUser);

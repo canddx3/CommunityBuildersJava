@@ -21,7 +21,7 @@ public class Volunteer {
 	private String city;
 	private String state;
 	private String zip;
-	private Long phone;
+	private String phone;
 	
 	public Volunteer() {
 		
@@ -41,7 +41,7 @@ public class Volunteer {
 		this.zip = volunteer.zip;
 	}
 	
-	public Volunteer(Long id, String username, String password, String firstName, String lastName, String email, Long phone, String street, String city, String state, String zip) {
+	public Volunteer(Long id, String username, String password, String firstName, String lastName, String email, String phone, String street, String city, String state, String zip) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -134,11 +134,11 @@ public class Volunteer {
 		this.zip = zip;
 	}
 
-	public Long getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Long phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -146,5 +146,9 @@ public class Volunteer {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String convertPhone(String phone) {
+		String number = phone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+		return number;
 
 }

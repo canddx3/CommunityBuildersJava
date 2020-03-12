@@ -24,7 +24,7 @@ public class User {
     private String charityCity;
     private String charityState;
     private Long charityZip;
-    private Long charityPhone;
+    private String charityPhone;
     private String charityLogoLink;
     
     @Column(nullable = false, unique = true)
@@ -48,7 +48,7 @@ public class User {
     	this.charityLogoLink = user.charityLogoLink;
     }
 
-    public User(Long id, String charityTitle, String charityName, String charityCat, String charityStreet, String charityCity, String charityState, Long charityZip, Long charityPhone, String username, String password, String charityLogoLink) {
+    public User(Long id, String charityTitle, String charityName, String charityCat, String charityStreet, String charityCity, String charityState, Long charityZip, String charityPhone, String username, String password, String charityLogoLink) {
     	this.id = id;
     	this.charityTitle = charityTitle;
     	this.charityName = charityName;
@@ -143,11 +143,11 @@ public class User {
 		this.charityZip = charityZip;
 	}
 
-	public Long getCharityPhone() {
+	public String getCharityPhone() {
 		return charityPhone;
 	}
 
-	public void setCharityPhone(Long charityPhone) {
+	public void setCharityPhone(String charityPhone) {
 		this.charityPhone = charityPhone;
 	}
 
@@ -157,6 +157,11 @@ public class User {
 
 	public void setCharityLogoLink(String charityLogoLink) {
 		this.charityLogoLink = charityLogoLink;
+	}
+	
+	public String convertPhone(String charityPhone) {
+		String number = charityPhone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
+		return number;
 	}
 	
 	

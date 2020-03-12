@@ -43,38 +43,13 @@ public class VolunteerController {
 	
 	@PostMapping("/volunteer")
 	public ResponseEntity<Volunteer> createVolunteer(@Valid @RequestBody Volunteer volunteer) {
-		Volunteer newVolunteer = new Volunteer(volunteer.getId(), volunteer.getUsername(), volunteer.getPassword(), volunteer.getFirstName(), volunteer.getLastName(), volunteer.getEmail(), volunteer.getPhone(), volunteer.getStreet(), volunteer.getCity(), volunteer.getState(), volunteer.getZip());
+		Volunteer newVolunteer = new Volunteer(volunteer.getId(), volunteer.getUsername(), volunteer.getPassword(), volunteer.getFirstName(), volunteer.getLastName(), volunteer.getEmail(), volunteer.convertPhone(volunteer.getPhone()), volunteer.getStreet(), volunteer.getCity(), volunteer.getState(), volunteer.getZip());
 		
 		volunteerRepository.save(newVolunteer);
 		return ResponseEntity.ok().body(volunteer);
 
 	}
-	/*
-    @PostMapping("/volunteer")
-    public ResponseEntity<Volunteer> createVolunteer(@Valid @RequestParam("username") String username ,@RequestParam("password") String password ,@RequestParam("email") String email ,@RequestParam("firstName") String firstName ,@RequestParam("lastName") String lastName ,@RequestParam("street") String street ,@RequestParam("city") String city, @RequestParam("state") String state, @RequestParam("zip") String zip, @RequestParam("phone") Long phone, Model model) {
-    	Volunteer foundVolunteer = volunteerRepository.findByUsername(username);
-    	if (foundVolunteer == null) {
-    		Volunteer newVolunteer = new Volunteer();
-    		newVolunteer.getId();
-    		newVolunteer.getUsername();
-    		newVolunteer.getPassword();
-    		newVolunteer.getEmail();
-    		newVolunteer.getFirstName();
-    		newVolunteer.getLastName();
-    		newVolunteer.getStreet();
-    		newVolunteer.getCity();
-    		newVolunteer.getState();
-    		newVolunteer.getZip();
-    		newVolunteer.getPhone();
-    		userService.Save(newVolunteer);
-    		return ResponseEntity.ok().body(newVolunteer);
-    	}
-    	else {
-    		model.addAttribute("exists", true);
-    		return ResponseEntity.ok(foundVolunteer);
-    	}
-    }*/
-    	  
+	    	  
     @PutMapping("/volunteer/{username}")
 	public ResponseEntity<Volunteer> putVolunteer(@PathVariable(value="username") String username, @RequestBody Volunteer Volunteer) {
 		// Saving to DB using an instance of the repo interface.
@@ -94,7 +69,7 @@ public class VolunteerController {
 			foundVolunteer.setCity(Volunteer.getCity());
 			foundVolunteer.setState(Volunteer.getState());
 			foundVolunteer.setZip(Volunteer.getZip());
-			foundVolunteer.setPhone(Volunteer.getPhone());
+			foundVolunteer.setPhone(Volunteer.convertPhone(Volunteer.getPhone()));
     		userService.Save(foundVolunteer);
 		}
 		return ResponseEntity.ok(foundVolunteer);
