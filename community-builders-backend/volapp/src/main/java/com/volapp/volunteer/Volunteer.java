@@ -20,7 +20,7 @@ public class Volunteer {
 	private String street;
 	private String city;
 	private String state;
-	private String zip;
+	private Long zip;
 	private String phone;
 	
 	public Volunteer() {
@@ -41,7 +41,7 @@ public class Volunteer {
 		this.zip = volunteer.zip;
 	}
 	
-	public Volunteer(Long id, String username, String password, String firstName, String lastName, String email, String phone, String street, String city, String state, String zip) {
+	public Volunteer(Long id, String username, String password, String firstName, String lastName, String email, String phone, String street, String city, String state, Long zip) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -126,11 +126,11 @@ public class Volunteer {
 		this.state = state;
 	}
 
-	public String getZip() {
+	public Long getZip() {
 		return zip;
 	}
 
-	public void setZip(String zip) {
+	public void setZip(Long zip) {
 		this.zip = zip;
 	}
 
@@ -150,5 +150,5 @@ public class Volunteer {
 	public String convertPhone(String phone) {
 		String number = phone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "($1) $2-$3");
 		return number;
-
+	}
 }
