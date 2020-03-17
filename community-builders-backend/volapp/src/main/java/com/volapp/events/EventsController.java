@@ -1,6 +1,8 @@
 package com.volapp.events;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,8 @@ public class EventsController {
 	EventsRepository eventsRepo;
 	
 	@PostMapping("/events")
-	public ResponseEntity<Object> Events(@Valid @RequestBody Events events){
-		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.convertDateTime(events.getEventDateTime()), events.getEventDescription());
+	public ResponseEntity<Object> Events(@Valid @RequestBody Events events) throws Exception{
+		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDateTime(), events.getEventTime(), events.getEventDescription());
 		
 		eventsRepo.save(newEvent);
 		return ResponseEntity.ok().body(events);
@@ -36,8 +38,13 @@ public class EventsController {
 		return eventsRepo.findByEventName(eventName);
 	}
 	
+	@GetMapping("/events")
+	public List<Events> findAll(){
+		return eventsRepo.findAll();
+	}
+	
 	@PutMapping("/events/{eventName}")
-	public ResponseEntity<Events> putEvent(@PathVariable(value="eventName") String eventName, @RequestBody Events events){
+	public ResponseEntity<Events> putEvent(@PathVariable(value="eventName") String eventName, @RequestBody Events events) throws Exception{
 		Events foundEvents= eventsRepo.findByEventName(eventName);
 		
 		if(foundEvents == null) {
@@ -51,7 +58,7 @@ public class EventsController {
 			foundEvents.setEventState(events.getEventState());
 			foundEvents.setEventZip(events.getEventZip());
 			foundEvents.setEventDateTime(events.getEventDateTime());
-			foundEvents.convertDateTime(events.getEventDateTime());
+			foundEvents.setEventTime(events.getEventTime());
 			foundEvents.setEventDescription(events.getEventDescription());
 			eventsRepo.save(foundEvents);
 		}

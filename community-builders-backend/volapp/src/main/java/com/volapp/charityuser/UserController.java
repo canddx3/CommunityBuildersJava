@@ -1,9 +1,12 @@
 package com.volapp.charityuser;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +29,13 @@ public class UserController {
 	private MySQLUserDetailsService userService;
 	
 	@GetMapping("/user/{username}")
-	public User find(@PathVariable("username") String username) {
-		return userRepo.findByUsername(username);
+	public UserDetails findUser(@PathVariable("username") String username) {
+		return userService.loadUserByUsername(username);
+	}
+	
+	@GetMapping("/user")
+	public List<User> findAll() {
+		return userRepo.findAll();
 	}
 	
 	@PostMapping("/user")
@@ -38,7 +46,7 @@ public class UserController {
 	}
 
     @PutMapping("/user/{username}")
-	public ResponseEntity<User> putUser(@PathVariable(value="username") String username, @RequestBody User user) {
+	public ResponseEntity<User> updateUser(@PathVariable(value="username") String username, @Valid @RequestBody User user) {
 		// Saving to DB using an instance of the repo interface.
 		User foundUser = userRepo.findByUsername(username);
 		
@@ -57,7 +65,7 @@ public class UserController {
 			foundUser.setCharityState(user.getCharityState());
 			foundUser.setCharityZip(user.getCharityZip());
 			foundUser.setCharityPhone(user.convertPhone(user.getCharityPhone()));
-			userRepo.save(foundUser);
+			userService.Save(foundUser);
 		}
 		return ResponseEntity.ok(foundUser);
 	}

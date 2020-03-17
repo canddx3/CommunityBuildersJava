@@ -1,10 +1,14 @@
 package com.volapp.events;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +28,7 @@ public class Events{
     private String eventState;
     private String eventZip;
     private String eventDateTime;
-    private LocalDateTime eventTime;
+    private Calendar eventTime;
     private String eventDescription;
     private String charityName;
 
@@ -48,7 +52,7 @@ public class Events{
     	this.eventDescription = events.eventDescription;
     }
     
-    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, LocalDateTime eventTime, String eventDescription) {
+    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, String eventDateTime, Calendar eventTime, String eventDescription) {
     	this.id = id;
     	this.charityName = charityName;
     	this.eventName = eventName;
@@ -56,7 +60,7 @@ public class Events{
     	this.eventCity = eventCity;
     	this.eventState = eventState;
     	this.eventZip = eventZip;
-//    	this.eventDateTime = eventDateTime;
+    	this.eventDateTime = eventDateTime;
     	this.eventTime = eventTime;
     	this.eventDescription = eventDescription;
     }
@@ -133,32 +137,35 @@ public class Events{
 		this.eventDateTime = eventDateTime;
 	}
 	
-	public LocalDateTime convertDateTime(String eventDateTime) throws DateTimeException{
-		LocalDateTime eventDate = LocalDateTime.now();
+	public Calendar convertDateTime(String eventDateTime) throws Exception{
+		Calendar eventDate = Calendar.getInstance();
+		eventDate.clear();
 		try {
-			DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a");
-			eventDate = LocalDateTime.from(format.parse(eventDateTime));
-		} catch (DateTimeException ex) {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			Date nowDate = format.parse(eventDateTime);
+			eventDate.setTime(nowDate);
+		} catch (Exception ex) {
 			System.out.printf("%s can't be formatted!%n", eventDateTime);
 		}
 		return eventDate;
 	}
-	
-//	public void setDateTime(String eventDateTime) throws DateTimeException {
-//		LocalDateTime eventDate = LocalDateTime.now();
-//		try {
-//			DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a");
-//			eventDate = LocalDateTime.from(format.parse(eventDateTime));
-//		} catch (DateTimeException ex) {
-//			System.out.printf("%s can't be formatted!%n",  eventDateTime);
-//		}
-//	}
 
-	/*
-	 * public LocalTime getEventTime() { return eventTime; }
-	 * 
-	 * public void setEventTime(LocalTime eventTime) { this.eventTime = eventTime; }
-	 */
+	
+	public Calendar getEventTime() throws Exception {
+		try {
+			eventTime = Events.this.convertDateTime(Events.this.eventDateTime);
+		} catch(Exception ex) {
+			System.out.println("Was not able to complete event day and time conversion. Caught exception: " + ex);
+		}
+		return eventTime; 
+	}
+	
+	public void setEventTime(Calendar eventTime) {
+		
+		this.eventTime = eventTime; 
+		
+	}
+	
 
 
 	public String getEventDescription() {

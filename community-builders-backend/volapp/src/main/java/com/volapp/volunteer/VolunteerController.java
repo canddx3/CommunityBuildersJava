@@ -1,12 +1,13 @@
 package com.volapp.volunteer;
 
-import java.util.List;
+//import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,20 +35,25 @@ public class VolunteerController {
 	private MySQLVolunteerDetailsService userService;
 	
 	@GetMapping("/volunteer/{username}")
-	public ResponseEntity<Volunteer> getVolunteer(@PathVariable(value="username") String username) {
-		Volunteer foundVolunteer = volunteerRepository.findByUsername(username).orElse(null);
+	public UserDetails find(@PathVariable("username") String username) {
 		
-		if(foundVolunteer == null) {
-			return ResponseEntity.notFound().header("Message",  "No volunteer account found with that username").build();
-		}
-		return ResponseEntity.ok(foundVolunteer);
+		return userService.loadUserByUsername(username);
 	}
+//	@GetMapping("/volunteer/{username}")
+//	public ResponseEntity<Volunteer> getVolunteer(@PathVariable(value="username") String username) {
+//		Volunteer foundVolunteer = volunteerRepository.findByUsername(username);
+//		
+//		if(foundVolunteer == null) {
+//			return ResponseEntity.notFound().header("Message",  "No volunteer account found with that username").build();
+//		}
+//		return ResponseEntity.ok(foundVolunteer);
+//	}
 	
 	@PostMapping("/volunteer")
 	public ResponseEntity<Volunteer> createVolunteer(@Valid @RequestBody Volunteer volunteer) {
 		Volunteer newVolunteer = new Volunteer(volunteer.getId(), volunteer.getUsername(), volunteer.getPassword(), volunteer.getFirstName(), volunteer.getLastName(), volunteer.getEmail(), volunteer.convertPhone(volunteer.getPhone()), volunteer.getStreet(), volunteer.getCity(), volunteer.getState(), volunteer.getZip());
 		
-		volunteerRepository.save(newVolunteer);
+		userService.Save(newVolunteer);
 		return ResponseEntity.ok().body(volunteer);
 
 	}
