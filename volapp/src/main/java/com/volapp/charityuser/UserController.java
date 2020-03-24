@@ -55,6 +55,7 @@ public class UserController {
 			return ResponseEntity.notFound().header("Message",  "No account found with that username").build();
 		}
 		else {
+			foundUser.setId(user.getId());
 			foundUser.setUsername(user.getUsername());
 			foundUser.setPassword(user.getPassword());
 			foundUser.setCharityCat(user.getCharityCat());
@@ -65,7 +66,7 @@ public class UserController {
 			foundUser.setCharityState(user.getCharityState());
 			foundUser.setCharityZip(user.getCharityZip());
 			foundUser.setCharityPhone(user.convertPhone(user.getCharityPhone()));
-			userService.Save(foundUser);
+			userRepo.save(foundUser);
 		}
 		return ResponseEntity.ok(foundUser);
 	}
