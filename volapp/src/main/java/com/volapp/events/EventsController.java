@@ -1,10 +1,13 @@
 package com.volapp.events;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/charity")
 public class EventsController {
@@ -23,8 +26,8 @@ public class EventsController {
 	EventsRepository eventsRepo;
 	
 	@PostMapping("/events")
-	public ResponseEntity<Object> Events(@Valid @RequestBody Events events){
-		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDate(), events.getEventTime(), events.getEventDescription());
+	public ResponseEntity<Object> Events(@Valid @RequestBody Events events) throws Exception{
+		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDateTime(), events.getEventTime(), events.getEventDescription());
 		
 		eventsRepo.save(newEvent);
 		return ResponseEntity.ok().body(events);
@@ -35,8 +38,13 @@ public class EventsController {
 		return eventsRepo.findByEventName(eventName);
 	}
 	
+	@GetMapping("/events")
+	public List<Events> findAll(){
+		return eventsRepo.findAll();
+	}
+	
 	@PutMapping("/events/{eventName}")
-	public ResponseEntity<Events> putEvent(@PathVariable(value="eventName") String eventName, @RequestBody Events events){
+	public ResponseEntity<Events> putEvent(@PathVariable(value="eventName") String eventName, @RequestBody Events events) throws Exception{
 		Events foundEvents= eventsRepo.findByEventName(eventName);
 		
 		if(foundEvents == null) {
@@ -49,7 +57,7 @@ public class EventsController {
 			foundEvents.setEventCity(events.getEventCity());
 			foundEvents.setEventState(events.getEventState());
 			foundEvents.setEventZip(events.getEventZip());
-			foundEvents.setEventDate(events.getEventDate());
+			foundEvents.setEventDateTime(events.getEventDateTime());
 			foundEvents.setEventTime(events.getEventTime());
 			foundEvents.setEventDescription(events.getEventDescription());
 			eventsRepo.save(foundEvents);
