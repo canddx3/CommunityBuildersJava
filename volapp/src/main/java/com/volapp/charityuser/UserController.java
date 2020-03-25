@@ -28,7 +28,7 @@ public class UserController {
 	@Autowired
 	private MySQLUserDetailsService userService;
 	
-	@GetMapping("/user/{username}")
+	@PostMapping("/user/{username}")
 	public UserDetails findUser(@PathVariable("username") String username) {
 		return userService.loadUserByUsername(username);
 	}
