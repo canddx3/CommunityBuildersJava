@@ -1,8 +1,8 @@
 package com.volapp.events;
 
-import java.text.SimpleDateFormat;
+/*import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Date;*/
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,8 +21,8 @@ public class Events{
     private String eventCity;
     private String eventState;
     private String eventZip;
-    private String eventDateTime;
-    private Calendar eventTime;
+    private String eventDate;
+    private String eventTime;
     private String eventDescription;
     private String charityName;
 
@@ -41,12 +41,12 @@ public class Events{
     	this.eventCity = events.eventCity;
     	this.eventState = events.eventState;
     	this.eventZip = events.eventZip;
-//    	this.eventDateTime = events.eventDateTime;
+    	this.eventDate = events.eventDate;
     	this.eventTime = events.eventTime;
     	this.eventDescription = events.eventDescription;
     }
     
-    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, String eventDateTime, Calendar eventTime, String eventDescription) {
+    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, String eventDate, String eventTime, String eventDescription) {
     	this.id = id;
     	this.charityName = charityName;
     	this.eventName = eventName;
@@ -54,7 +54,7 @@ public class Events{
     	this.eventCity = eventCity;
     	this.eventState = eventState;
     	this.eventZip = eventZip;
-    	this.eventDateTime = eventDateTime;
+    	this.eventDate = eventDate;
     	this.eventTime = eventTime;
     	this.eventDescription = eventDescription;
     }
@@ -123,44 +123,21 @@ public class Events{
 		this.eventZip = eventZip;
 	}
 
-	public String getEventDateTime() {
-		return eventDateTime;
-	}
-
-	public void setEventDateTime(String eventDateTime) {
-		this.eventDateTime = eventDateTime;
-	}
-	
-	public Calendar convertDateTime(String eventDateTime) throws Exception{
-		Calendar eventDate = Calendar.getInstance();
-		eventDate.clear();
-		try {
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-			Date nowDate = format.parse(eventDateTime);
-			eventDate.setTime(nowDate);
-		} catch (Exception ex) {
-			System.out.printf("%s can't be formatted!%n", eventDateTime);
-		}
+	public String getEventDate() {
 		return eventDate;
 	}
 
-	
-	public Calendar getEventTime() throws Exception {
-		try {
-			eventTime = Events.this.convertDateTime(Events.this.eventDateTime);
-		} catch(Exception ex) {
-			System.out.println("Was not able to complete event day and time conversion. Caught exception: " + ex);
-		}
-		return eventTime; 
+	public void setEventDate(String eventDate) {
+		this.eventDate = eventDate;
 	}
-	
-	public void setEventTime(Calendar eventTime) {
-		
-		this.eventTime = eventTime; 
-		
-	}
-	
 
+	public String getEventTime() {
+		return eventTime;
+	}
+
+	public void setEventTime(String eventTime) {
+		this.eventTime = eventTime;
+	}
 
 	public String getEventDescription() {
 		return eventDescription;

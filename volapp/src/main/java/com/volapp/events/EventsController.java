@@ -27,7 +27,7 @@ public class EventsController {
 	
 	@PostMapping("/events")
 	public ResponseEntity<Object> Events(@Valid @RequestBody Events events) throws Exception{
-		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDateTime(), events.getEventTime(), events.getEventDescription());
+		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDate(), events.getEventTime(), events.getEventDescription());
 		
 		eventsRepo.save(newEvent);
 		return ResponseEntity.ok().body(events);
@@ -57,7 +57,7 @@ public class EventsController {
 			foundEvents.setEventCity(events.getEventCity());
 			foundEvents.setEventState(events.getEventState());
 			foundEvents.setEventZip(events.getEventZip());
-			foundEvents.setEventDateTime(events.getEventDateTime());
+			foundEvents.setEventDate(events.getEventDate());
 			foundEvents.setEventTime(events.getEventTime());
 			foundEvents.setEventDescription(events.getEventDescription());
 			eventsRepo.save(foundEvents);
