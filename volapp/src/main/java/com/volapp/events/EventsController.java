@@ -59,10 +59,7 @@ public class EventsController {
 		else {
 			foundEvent.setCharityName(events.getCharityName());
 			foundEvent.setEventName(events.getEventName());
-			foundEvent.setEventStreet(events.getEventStreet());
-			foundEvent.setEventCity(events.getEventCity());
-			foundEvent.setEventState(events.getEventState());
-			foundEvent.setEventZip(events.getEventZip());
+			foundEvent.setEventLocation(events.getEventLocation());
 			foundEvent.setEventDate(events.getEventDate());
 			foundEvent.setEventTime(events.getEventTime());
 			foundEvent.setEventDescription(events.getEventDescription());

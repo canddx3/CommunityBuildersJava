@@ -17,10 +17,7 @@ public class Events{
 
 
     private String eventName;
-    private String eventStreet;
-    private String eventCity;
-    private String eventState;
-    private String eventZip;
+    private String eventLocation;
     private String eventDate;
     private String eventTime;
     private String eventDescription;
@@ -37,23 +34,17 @@ public class Events{
     	this.id = events.id;
     	this.charityName = events.charityName;
     	this.eventName = events.eventName;
-    	this.eventStreet = events.eventStreet;
-    	this.eventCity = events.eventCity;
-    	this.eventState = events.eventState;
-    	this.eventZip = events.eventZip;
+    	this.eventLocation = events.eventLocation;
     	this.eventDate = events.eventDate;
     	this.eventTime = events.eventTime;
     	this.eventDescription = events.eventDescription;
     }
     
-    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, String eventDate, String eventTime, String eventDescription) {
+    public Events (Long id, String charityName, String eventName, String eventLocation, String eventDate, String eventTime, String eventDescription) {
     	this.id = id;
     	this.charityName = charityName;
     	this.eventName = eventName;
-    	this.eventStreet = eventStreet;
-    	this.eventCity = eventCity;
-    	this.eventState = eventState;
-    	this.eventZip = eventZip;
+    	this.eventLocation = eventLocation;
     	this.eventDate = eventDate;
     	this.eventTime = eventTime;
     	this.eventDescription = eventDescription;
@@ -90,39 +81,14 @@ public class Events{
 		this.eventName = eventName;
 	}
 
-
-	public String getEventStreet() {
-		return eventStreet;
+	public String getEventLocation() {
+		return eventLocation;
 	}
 
-	public void setEventStreet(String eventStreet) {
-		this.eventStreet = eventStreet;
+	public void setEventLocation(String eventLocation) {
+		this.eventLocation = eventLocation;
 	}
 	
-	public String getEventCity() {
-		return eventCity;
-	}
-
-	public void setEventCity(String eventCity) {
-		this.eventCity = eventCity;
-	}
-
-	public String getEventState() {
-		return eventState;
-	}
-
-	public void setEventState(String eventState) {
-		this.eventState = eventState;
-	}
-
-	public String getEventZip() {
-		return eventZip;
-	}
-
-	public void setEventZip(String eventZip) {
-		this.eventZip = eventZip;
-	}
-
 	public String getEventDate() {
 		return eventDate;
 	}
