@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +25,14 @@ public class UserController {
 	UserRepository userRepo;
 	
 	@Autowired
+	UserIdRepository userIdRepo;
+	
+	@Autowired
 	private MySQLUserDetailsService userService;
 	
-	@GetMapping("/user/{username}")
-	public User findUser(@PathVariable("username") String username) {
-		return userRepo.findByUsername(username);
+	@GetMapping("/user/{id}")
+	public User findUser(@PathVariable(value="id") Long id) {
+		return userIdRepo.findById(id);
 	}
 	
 	@GetMapping("/user")
@@ -40,15 +42,15 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user){
-	User newUser = new User(user.getId(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityZip(), user.convertPhone(user.getCharityPhone()), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
-	userService.Save(newUser);
+//	User newUser = new User(user.getId(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityZip(), user.convertPhone(user.getCharityPhone()), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
+	userService.Save(user);
 	return ResponseEntity.ok().body(user);
 	}
 
-    @PutMapping("/user/{username}")
-	public ResponseEntity<User> updateUser(@PathVariable(value="username") String username, @Valid @RequestBody User user) {
+    @PutMapping("/user/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable(value="id") Long id, @Valid @RequestBody User user) {
 		// Saving to DB using an instance of the repo interface.
-		User foundUser = userRepo.findByUsername(username);
+		User foundUser = userIdRepo.findById(id);
 		
 		// RespEntity crafts response to include correct status codes.
 		if(foundUser == null) {
@@ -71,9 +73,9 @@ public class UserController {
 		return ResponseEntity.ok(foundUser);
 	}
     
-    @DeleteMapping("/user/{username}")
-	public ResponseEntity<User> deleteUser(@PathVariable(value="username") String username) {
-		User foundUser = userRepo.findByUsername(username);
+    @DeleteMapping("/user/{id}")
+	public ResponseEntity<User> deleteUser(@PathVariable(value="id") Long id) {
+		User foundUser = userIdRepo.findById(id);
 		
 		if(foundUser == null) {
 			return ResponseEntity.notFound().header("Message",  "No account with that username").build();

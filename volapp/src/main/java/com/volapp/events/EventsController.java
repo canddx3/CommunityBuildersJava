@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/charity")
@@ -27,15 +28,19 @@ public class EventsController {
 	
 	@PostMapping("/events")
 	public ResponseEntity<Object> Events(@Valid @RequestBody Events events) throws Exception{
-		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDate(), events.getEventTime(), events.getEventDescription());
+//		Events newEvent = new Events(events.getId(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDate(), events.getEventTime(), events.getEventDescription());
 		
-		eventsRepo.save(newEvent);
+		eventsRepo.save(events);
 		return ResponseEntity.ok().body(events);
 	}
 	
-	@GetMapping("/events/{eventName}")
-	public Events find(@PathVariable("eventName") String eventName){
-		return eventsRepo.findByEventName(eventName);
+	@GetMapping("/events/{id}")
+	public ResponseEntity<Events> find(@PathVariable("id") Integer id){
+		Events foundEvent = eventsRepo.findById(id);
+		if(foundEvent == null) {
+			return ResponseEntity.notFound().header("Message", "No event with that id").build();
+		}
+		return ResponseEntity.ok(foundEvent);
 	}
 	
 	@GetMapping("/events")
@@ -43,31 +48,31 @@ public class EventsController {
 		return eventsRepo.findAll();
 	}
 	
-	@PutMapping("/events/{eventName}")
-	public ResponseEntity<Events> putEvent(@PathVariable(value="eventName") String eventName, @RequestBody Events events) throws Exception{
-		Events foundEvents= eventsRepo.findByEventName(eventName);
+	@PutMapping("/events/{id}")
+	public ResponseEntity<Events> putEvent(@PathVariable(value="id") Integer id, @RequestBody Events events) throws Exception{
+		Events foundEvent= eventsRepo.findById(id);
 		
-		if(foundEvents == null) {
+		if(foundEvent == null) {
 			return ResponseEntity.notFound().header("Message", "Event not found").build();
 			}
 		else {
-			foundEvents.setCharityName(events.getCharityName());
-			foundEvents.setEventName(events.getEventName());
-			foundEvents.setEventStreet(events.getEventStreet());
-			foundEvents.setEventCity(events.getEventCity());
-			foundEvents.setEventState(events.getEventState());
-			foundEvents.setEventZip(events.getEventZip());
-			foundEvents.setEventDate(events.getEventDate());
-			foundEvents.setEventTime(events.getEventTime());
-			foundEvents.setEventDescription(events.getEventDescription());
-			eventsRepo.save(foundEvents);
+			foundEvent.setCharityName(events.getCharityName());
+			foundEvent.setEventName(events.getEventName());
+			foundEvent.setEventStreet(events.getEventStreet());
+			foundEvent.setEventCity(events.getEventCity());
+			foundEvent.setEventState(events.getEventState());
+			foundEvent.setEventZip(events.getEventZip());
+			foundEvent.setEventDate(events.getEventDate());
+			foundEvent.setEventTime(events.getEventTime());
+			foundEvent.setEventDescription(events.getEventDescription());
+			eventsRepo.save(foundEvent);
 		}
-		return ResponseEntity.ok(foundEvents);
+		return ResponseEntity.ok(foundEvent);
 		
 	}
-    @DeleteMapping("/events/{eventName}")
-	public ResponseEntity<Events> deleteEvent(@PathVariable(value="eventName") String eventName) {
-		Events foundEvent = eventsRepo.findByEventName(eventName);
+    @DeleteMapping("/events/{id}")
+	public ResponseEntity<Events> deleteEvent(@PathVariable(value="id") Integer id) {
+		Events foundEvent = eventsRepo.findById(id);
 		
 		if(foundEvent == null) {
 			return ResponseEntity.notFound().header("Message",  "Event not found").build();
