@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.volapp.events.Events;
 
 
-public interface EventsRepository extends JpaRepository<Events, String>{
+public interface EventsRepository extends JpaRepository<Events, Long>{
 
-	Events findById(Integer id);
+	Events findByEventName(String eventName);
 	
 	List<Events> findByCharityName(String charityName);
 	

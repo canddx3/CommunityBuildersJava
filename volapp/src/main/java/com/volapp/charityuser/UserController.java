@@ -42,7 +42,6 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user){
-//	User newUser = new User(user.getId(), user.getCharityName(), user.getCharityCat(), user.getCharityStreet(), user.getCharityCity(), user.getCharityState(), user.getCharityTitle(), user.getCharityZip(), user.convertPhone(user.getCharityPhone()), user.getUsername(), user.getPassword(), user.getCharityLogoLink());
 	userService.Save(user);
 	return ResponseEntity.ok().body(user);
 	}
@@ -68,7 +67,7 @@ public class UserController {
 			foundUser.setCharityState(user.getCharityState());
 			foundUser.setCharityZip(user.getCharityZip());
 			foundUser.setCharityPhone(user.convertPhone(user.getCharityPhone()));
-			userRepo.save(foundUser);
+			userIdRepo.save(foundUser);
 		}
 		return ResponseEntity.ok(foundUser);
 	}
@@ -81,7 +80,7 @@ public class UserController {
 			return ResponseEntity.notFound().header("Message",  "No account with that username").build();
 		}
 		else {
-			userRepo.delete(foundUser);
+			userIdRepo.delete(foundUser);
 		}
 		return ResponseEntity.ok().build();
 	}

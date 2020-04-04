@@ -28,7 +28,7 @@ public class Events{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     
     
     public Events() {}
@@ -46,7 +46,7 @@ public class Events{
     	this.eventDescription = events.eventDescription;
     }
     
-    public Events (Integer id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, String eventDate, String eventTime, String eventDescription) {
+    public Events (Long id, String charityName, String eventName, String eventStreet, String eventCity, String eventState, String eventZip, String eventDate, String eventTime, String eventDescription) {
     	this.id = id;
     	this.charityName = charityName;
     	this.eventName = eventName;
@@ -61,12 +61,12 @@ public class Events{
     
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
