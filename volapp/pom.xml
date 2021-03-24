@@ -9,10 +9,10 @@
     <relativePath/>  
     <!-- lookup parent from repository --> 
   </parent>  
-  <groupId>com.volunteer</groupId>  
-  <artifactId>volunteer</artifactId>  
+  <groupId>com.volunteer</groupId>
+  <artifactId>volunteer</artifactId>
   <version>0.0.1-SNAPSHOT</version>  
-  <name>volunteer</name>  
+  <name>BackEndProject</name>
   <description>Demo project for Spring Boot</description>  
   <properties> 
     <java.version>1.8</java.version> 
@@ -71,14 +71,12 @@
         <artifactId>spring-boot-maven-plugin</artifactId> 
       </plugin>  
       <plugin> 
-      <!-- ServicePlanc0e65a22-1e8f-46f3 -->
-        <groupId>com.microsoft.azure</groupId>  
+        <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>  
         <version>1.9.0</version>  
         <configuration> 
           <schemaVersion>V2</schemaVersion>  
-          <subscriptionID>5ae29874-befe-434e-a7aa-f2e1e481988b</subscriptionID>
-          <resourceGroup>volunteer-full-stack</resourceGroup>  
+          <resourceGroup>volunteer-full-stack</resourceGroup>
           <appName>volunteer-full-stack</appName>  
           <pricingTier>P1v2</pricingTier>  
           <region>westeurope</region>  
