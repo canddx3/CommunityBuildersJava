@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api/charity")
@@ -29,7 +28,7 @@ public class EventsController {
 	
 	@PostMapping("/events")
 	public ResponseEntity<Object> Events(@RequestBody Events events) throws Exception{
-//		Events newEvent = new Events(events.geteventName(), events.getCharityName(), events.getEventName(), events.getEventStreet(), events.getEventCity(), events.getEventState(), events.getEventZip(), events.getEventDate(), events.getEventTime(), events.getEventDescription());
+	Events newEvent = new Events(events);
 		
 		eventsRepo.save(events);
 		return ResponseEntity.ok().body(events);

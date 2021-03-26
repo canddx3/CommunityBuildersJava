@@ -60,12 +60,8 @@ public class UserController {
 			foundUser.setUsername(user.getUsername());
 			foundUser.setPassword(user.getPassword());
 			foundUser.setCharityCat(user.getCharityCat());
-			foundUser.setCharityTitle(user.getCharityTitle());
 			foundUser.setCharityName(user.getCharityName());
-			foundUser.setCharityStreet(user.getCharityStreet());
-			foundUser.setCharityCity(user.getCharityCity());
-			foundUser.setCharityState(user.getCharityState());
-			foundUser.setCharityZip(user.getCharityZip());
+			foundUser.setCharityAddress(user.getCharityAddress());
 			foundUser.setCharityPhone(user.convertPhone(user.getCharityPhone()));
 			userIdRepo.save(foundUser);
 		}

@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/volapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserIdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserIdRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserSignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserSignIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsIdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsIdRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +36,27 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="VolunteerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.volapp.VolunteerApplication" />
+      <module name="volunteer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.volapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.VolunteerApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
