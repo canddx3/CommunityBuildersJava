@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserIdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserIdRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserSignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserSignIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsIdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsIdRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="this works final commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,6 +55,29 @@
       <option name="presentableId" value="Default" />
       <updated>1616563409723</updated>
     </task>
+    <task id="LOCAL-00001" summary="this works final commit">
+      <created>1616789409108</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616789409108</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="this works final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="this works final commit" />
   </component>
 </project>
