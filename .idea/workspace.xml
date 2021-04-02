@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="this works final commit" />
+    <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="this works final commit">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityIdRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/MySQLUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/MySQLUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/Charity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserIdRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserSignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharitySignIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +27,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1qBqcFUmDr2hzVDq9Vb3Bg71CCn" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
-    <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
@@ -24,7 +45,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager">
     <configuration name="VolunteerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -69,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616790370235</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="final commit">
+      <created>1616790572636</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616790572636</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -86,6 +120,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="this works final commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="this works final commit" />
+    <MESSAGE value="final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final commit" />
   </component>
 </project>

@@ -6,41 +6,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="user")
-public class User {
+@Table(name="charity")
+public class Charity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   
+	@NotEmpty(message = "cant be empty")
+    private String username;
+	@NotEmpty(message = "cant be empty")
+	private String password;
+	@NotEmpty(message = "cant be empty")
     private String charityName;
+	@NotEmpty(message = "cant be empty")
     private String charityCat;
+	@NotEmpty(message = "cant be empty")
 	private String charityPhone;
+	@NotEmpty(message = "cant be empty")
     private String charityAddress;
 
-
-
-    @Column(nullable = false, unique = true)
-    private String username;
-    private String password;
+    public Charity() {}
     
-    public User() {}
-    
-    public User(User user) {
-    	this.id = user.id;
-		this.username = user.username;
-		this.password = user.password;
-    	this.charityName = user.charityName;
-		this.charityPhone = user.charityPhone;
-    	this.charityCat = user.charityCat;
-    	this.charityAddress = user.charityAddress;
+    public Charity(Charity charity) {
+    	this.id = charity.id;
+		this.username = charity.username;
+		this.password = charity.password;
+    	this.charityName = charity.charityName;
+		this.charityPhone = charity.charityPhone;
+    	this.charityCat = charity.charityCat;
+    	this.charityAddress = charity.charityAddress;
 
     }
 
-    public User(Long id, String username, String password, String charityName, String charityPhone, String charityCat, String charityAddress) {
+    public Charity(Long id, String username, String password, String charityName, String charityPhone, String charityCat, String charityAddress) {
     	this.id = id;
 		this.username = username;
 		this.password = password;
@@ -50,18 +51,15 @@ public class User {
     	this.charityAddress = charityAddress;
     }
 
+
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	public String getUsername() { return username; }
+	public void setUsername(String username) { this.username = username; }
 	public String getPassword() {
 		return password;
 	}

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/charity")
+@RequestMapping("/api/charity/events")
 public class EventsController {
 
 	@Autowired
@@ -25,16 +25,19 @@ public class EventsController {
 	
 	@Autowired
 	EventsIdRepository eventsIdRepo;
-	
-	@PostMapping("/events")
-	public ResponseEntity<Object> Events(@RequestBody Events events) throws Exception{
-	Events newEvent = new Events(events);
-		
+
+	@GetMapping
+	public List<Events> findAll(){
+		return eventsRepo.findAll();
+	}
+
+	@PostMapping
+	public ResponseEntity<Events> Events(@RequestBody Events events) throws Exception{
 		eventsRepo.save(events);
 		return ResponseEntity.ok().body(events);
 	}
 	
-	@GetMapping("/events/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Events> find(@PathVariable("id") Long id){
 		Events foundEvent = eventsIdRepo.findById(id);
 		if(foundEvent == null) {
@@ -43,12 +46,8 @@ public class EventsController {
 		return ResponseEntity.ok(foundEvent);
 	}
 	
-	@GetMapping("/events")
-	public List<Events> findAll(){
-		return eventsRepo.findAll();
-	}
-	
-	@PutMapping("/events/{id}")
+
+	@PutMapping("/{id}")
 	public ResponseEntity<Events> putEvent(@PathVariable(value="id") Long id, @RequestBody Events events) throws Exception{
 		Events foundEvent= eventsIdRepo.findById(id);
 		
@@ -67,7 +66,7 @@ public class EventsController {
 		return ResponseEntity.ok(foundEvent);
 		
 	}
-    @DeleteMapping("/events/{id}")
+    @DeleteMapping("/{id}")
 	public ResponseEntity<Events> deleteEvent(@PathVariable(value="id") Long id) {
 		Events foundEvent = eventsIdRepo.findById(id);
 		

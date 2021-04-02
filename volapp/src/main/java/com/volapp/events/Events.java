@@ -1,33 +1,32 @@
 package com.volapp.events;
 
-/*import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;*/
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.*;
-
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="events")
 public class Events{
 
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	@NotEmpty(message = "cant be empty")
     private String eventName;
-    private String eventLocation;
-    private String eventDate;
-    private String eventTime;
-    private String eventDescription;
-    private String charityName;
+	@NotEmpty(message = "cant be empty")
+	private String eventLocation;
+	@NotEmpty(message = "cant be empty")
+	private String eventDate;
+	@NotEmpty(message = "cant be empty")
+	private String eventTime;
+	@NotEmpty(message = "cant be empty")
+	private String eventDescription;
+	@NotEmpty(message = "cant be empty")
+	private String charityName;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    
     public Events() {}
     
     public Events(Events events) {

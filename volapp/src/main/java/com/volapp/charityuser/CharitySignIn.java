@@ -2,7 +2,7 @@ package com.volapp.charityuser;
 
 import javax.persistence.Column;
 
-public class UserSignIn {
+public class CharitySignIn {
     
     @Column(nullable = false, unique = true)
     private String username;
