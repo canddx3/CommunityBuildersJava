@@ -1,6 +1,5 @@
-package com.volapp.charityuser;
+package com.volapp.charity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

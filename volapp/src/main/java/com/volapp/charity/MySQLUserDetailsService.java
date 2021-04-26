@@ -1,4 +1,4 @@
-package com.volapp.charityuser;
+package com.volapp.charity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +14,23 @@ import org.springframework.stereotype.Service;
 public class MySQLUserDetailsService implements UserDetailsService{
 
 	@Autowired
-	private CharityRepository userRepository;
+	private CharityRepository charityRepository;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-		Charity user = userRepository.findByUsername(username);
-		if (user == null) {
+		Charity charity = charityRepository.findByUsername(username);
+		if (charity == null) {
 			throw new UsernameNotFoundException(username);
 		}
-		return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());
+		return new org.springframework.security.core.userdetails.User(charity.getUsername(), charity.getPassword(), getAuthority());
 	}
 
-	public UserDetails Save(Charity newUser) {
-		newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-		Charity savedUser = userRepository.save(newUser);
-		return new org.springframework.security.core.userdetails.User(savedUser.getUsername(), savedUser.getPassword(), getAuthority());
+	public UserDetails Save(Charity newCharity) {
+		newCharity.setPassword(passwordEncoder.encode(newCharity.getPassword()));
+		Charity savedCharity = charityRepository.save(newCharity);
+		return new org.springframework.security.core.userdetails.User(savedCharity.getUsername(), savedCharity.getPassword(), getAuthority());
 	}
 	
 	private List<SimpleGrantedAuthority> getAuthority() {

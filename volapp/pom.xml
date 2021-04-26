@@ -62,40 +62,45 @@
       <groupId>org.springframework.security</groupId>  
       <artifactId>spring-security-test</artifactId>  
       <scope>test</scope> 
-    </dependency> 
+    </dependency>
+      <dependency>
+          <groupId>org.apache.velocity</groupId>
+          <artifactId>velocity</artifactId>
+          <version>1.7</version>
+      </dependency>
   </dependencies>  
   <build> 
     <plugins> 
       <plugin> 
         <groupId>org.springframework.boot</groupId>  
         <artifactId>spring-boot-maven-plugin</artifactId> 
-      </plugin>  
-      <plugin> 
+      </plugin>
+      <plugin>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>  
-        <version>1.9.0</version>  
-        <configuration> 
-          <schemaVersion>V2</schemaVersion>  
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.9.0</version>
+        <configuration>
+          <schemaVersion>V2</schemaVersion>
           <resourceGroup>volunteer-full-stack</resourceGroup>
-          <appName>volunteer-full-stack</appName>  
-          <pricingTier>P1v2</pricingTier>  
-          <region>westeurope</region>  
-          <runtime> 
-            <os>linux</os>  
-            <javaVersion>java11</javaVersion>  
-            <webContainer>java11</webContainer> 
-          </runtime>  
-          <deployment> 
-            <resources> 
-              <resource> 
-                <directory>${project.basedir}/target</directory>  
-                <includes> 
-                  <include>*.jar</include> 
-                </includes> 
-              </resource> 
-            </resources> 
-          </deployment> 
-        </configuration> 
+          <appName>volunteer-full-stack</appName>
+          <pricingTier>P1v2</pricingTier>
+          <region>westeurope</region>
+          <runtime>
+            <os>linux</os>
+            <javaVersion>java11</javaVersion>
+            <webContainer>java11</webContainer>
+          </runtime>
+          <deployment>
+            <resources>
+              <resource>
+                <directory>${project.basedir}/target</directory>
+                <includes>
+                  <include>*.jar</include>
+                </includes>
+              </resource>
+            </resources>
+          </deployment>
+        </configuration>
       </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>

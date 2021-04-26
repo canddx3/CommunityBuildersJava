@@ -5,24 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="this works final commit">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityIdRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_1_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/Exceptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/volapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/MySQLUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/MySQLUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/Charity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserIdRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/UserSignIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharitySignIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/Events.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/VolunteerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/CharityApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/Charity.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/Charity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/CharityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityIdRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/CharityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharitySignIn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/MySQLUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/MySQLUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsIdRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,9 +67,14 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
+  </component>
   <component name="RunManager">
-    <configuration name="VolunteerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.volapp.VolunteerApplication" />
+    <configuration name="CharityApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.volapp.CharityApplication" />
       <module name="volunteer" />
       <extension name="coverage">
         <pattern>
@@ -69,7 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.VolunteerApplication" />
+        <item itemvalue="Application.CharityApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -103,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616790572636</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="this works final commit">
+      <created>1617388547074</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617388547074</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,8 +145,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="this works final commit" />
     <MESSAGE value="final commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="final commit" />
+    <MESSAGE value="this works final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="this works final commit" />
   </component>
 </project>
