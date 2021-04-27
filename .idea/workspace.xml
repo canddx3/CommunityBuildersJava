@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8fb14183-abff-41b1-906d-23fd653da7bb" name="Default Changelist" comment="this works final commit">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_1_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/VolunteerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/CharityApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/WebSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/Charity.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/Charity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/CharityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityIdRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/CharityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/CharitySignIn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charityuser/MySQLUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/MySQLUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsIdRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/events/EventsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/CharityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/volapp/src/main/java/com/volapp/charity/CharityController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617388547074</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="everything works with postman">
+      <created>1619401612971</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619401612971</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final commit" />
     <MESSAGE value="this works final commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="this works final commit" />
+    <MESSAGE value="everything works with postman" />
+    <option name="LAST_COMMIT_MESSAGE" value="everything works with postman" />
   </component>
 </project>

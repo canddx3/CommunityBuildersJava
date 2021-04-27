@@ -41,22 +41,20 @@ public class CharityController {
 	@PutMapping("/profile/{id}")
 	public ResponseEntity<Charity> updateCharity(@PathVariable Long id, @Valid @RequestBody Charity charity) {
 		// Saving to DB using an instance of the repo interface.
-		Charity charityUser = charityRepo.findById(id)
+		Charity charityUser = this.charityRepo.findById(id)
 				.orElseThrow(() -> new Exceptions("Charity doesnt exit"));
-
-			charityUser.setId(charityUser.getId());
-			charityUser.setUsername(charityUser.getUsername());
-			charityUser.setPassword(charityUser.getPassword());
-			charityUser.setCharityCat(charityUser.getCharityCat());
-			charityUser.setCharityName(charityUser.getCharityName());
-			charityUser.setCharityAddress(charityUser.getCharityAddress());
-			charityUser.setCharityPhone(charityUser.convertPhone(charityUser.getCharityPhone()));
-			mySQLUserDetailsService.Save(charityUser);
+			charityUser.setUsername(charity.getUsername());
+			charityUser.setPassword(charity.getPassword());
+			charityUser.setCharityCat(charity.getCharityCat());
+			charityUser.setCharityName(charity.getCharityName());
+			charityUser.setCharityAddress(charity.getCharityAddress());
+			charityUser.setCharityPhone(charity.convertPhone(charityUser.getCharityPhone()));
+			mySQLUserDetailsService.Save(charity);
 		return ResponseEntity.ok(charityUser);
 	}
 
     @DeleteMapping("/delete/{id}")
-	public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable Long id) {
+	public ResponseEntity<Map<String, Boolean>> deleteCharity(@PathVariable Long id) {
 		Charity charity = charityRepo.findById(id)
 				.orElseThrow(() -> new Exceptions("Charity doesnt exist"));
 			charityRepo.delete(charity);
